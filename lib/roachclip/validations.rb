@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'validatable'
 include Validatable
 module Roachclip
   module Validations
