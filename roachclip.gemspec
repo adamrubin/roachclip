@@ -49,12 +49,14 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<joint>, ["= 0.6.2"])
       s.add_runtime_dependency(%q<paperclip>, [">= 2.3.3"])
+      s.add_runtime_dependency(%q<validatable>, ["= 1.6.7"])
       s.add_development_dependency(%q<shoulda>, ["= 2.11.0"])
       s.add_development_dependency(%q<mongo_mapper>, ["= 0.8.2"])
       s.add_development_dependency(%q<ruby-debug>, ["= 0.10.3"])
     else
       s.add_dependency(%q<joint>, ["= 0.6.2"])
       s.add_dependency(%q<paperclip>, [">= 2.3.3"])
+      s.add_dependency(%q<validatable>, ["= 1.6.7"])
       s.add_dependency(%q<shoulda>, ["= 2.11.0"])
       s.add_dependency(%q<mongo_mapper>, ["= 0.8.2"])
       s.add_dependency(%q<ruby-debug>, ["= 0.10.3"])
@@ -62,6 +64,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<joint>, ["= 0.6.2"])
     s.add_dependency(%q<paperclip>, [">= 2.3.3"])
+    s.add_dependency(%q<validatable>, ["= 1.6.7"])
     s.add_dependency(%q<shoulda>, ["= 2.11.0"])
     s.add_dependency(%q<mongo_mapper>, ["= 0.8.2"])
     s.add_dependency(%q<ruby-debug>, ["= 0.10.3"])
