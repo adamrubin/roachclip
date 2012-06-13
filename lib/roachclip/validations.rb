@@ -1,5 +1,6 @@
 module Roachclip
   module Validations
+    include Validatable
     class ValidatesPresenceOf < Validatable::ValidationBase
       def valid?(instance)
         instance.send("#{attribute}?")
