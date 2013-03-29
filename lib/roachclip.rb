@@ -13,6 +13,7 @@ end
 
 module Roachclip
   autoload :Version, 'roachclip/version'
+  extend ActiveSupport::Concern
 
   class InvalidAttachment < StandardError; end
 
