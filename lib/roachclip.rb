@@ -19,7 +19,7 @@ module Roachclip
 
   included  do
     plugin Joint
-    class_inheritable_accessor :roaches
+    class_attribute :roaches
     roaches = Set.new
   end
 
