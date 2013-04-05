@@ -60,7 +60,7 @@ module Roachclip
     end
   end
 
-  module InstanceMethods
+#  module InstanceMethods
     def process_roaches
       roaches.each do |img|
         name = img[:name]
@@ -104,5 +104,5 @@ module Roachclip
         end
       end
     end
-  end
+  #end
 end
