@@ -17,10 +17,10 @@ module Roachclip
 
   class InvalidAttachment < StandardError; end
 
-  def self.configure(model)
-    model.plugin Joint
-    model.class_inheritable_accessor :roaches
-    model.roaches = Set.new
+  included  do
+    plugin Joint
+    class_inheritable_accessor :roaches
+    roaches = Set.new
   end
 
   module ClassMethods
