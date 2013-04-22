@@ -20,7 +20,6 @@ module Roachclip
   included  do
     plugin Joint
     class_attribute :roaches
-    roaches = Set.new
   end
 
   module ClassMethods
@@ -30,10 +29,12 @@ module Roachclip
       raise InvalidAttachment unless attachment_names.include?(name)
 
       path = options.delete(:path) || "/gridfs/fs/%s-%s"
+
+      self.roaches = Set.new
       self.roaches << {:name => name, :options => options}
 
       options[:default_style] ||= :original
-      
+
       options[:styles] ||= {}
       options[:styles].each { |k,v| self.attachment "#{name}_#{k}" unless k == options[:default_style] }
 
@@ -45,7 +46,7 @@ module Roachclip
         time = time.to_i
         (path % [self.send(name).id.to_s, time]).chomp('-')
       end
- 
+
       options[:styles].each do |k,v|
         self.send(:define_method, "#{name}_#{k}_path") do
           time = self.attributes['updated_at'] || Time.now
@@ -66,13 +67,13 @@ module Roachclip
         name = img[:name]
         styles = img[:options][:styles]
         default_style = img[:options][:default_style]
-        
+
         return unless assigned_attachments[name]
 
         src = Tempfile.new ["roachclip", name.to_s].join('-')
         src.write assigned_attachments[name].read
         src.close
-        
+
         assigned_attachments[name].rewind
 
         styles.keys.each do |style_key|
@@ -96,7 +97,7 @@ module Roachclip
         name = img[:name]
         styles = img[:options][:styles]
         default_style = img[:options][:default_style]
-        
+
         return unless @nil_attachments && @nil_attachments.include?(name)
 
         styles.keys.each do |style_key|
